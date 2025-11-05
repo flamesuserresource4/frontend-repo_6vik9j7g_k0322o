@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import WalletConnector from './components/WalletConnector.jsx';
-import ContractInteractor from './components/ContractInteractor.jsx';
+import EducationRegistry from './components/EducationRegistry.jsx';
 import IPFSUploader from './components/IPFSUploader.jsx';
 import ActivityLog from './components/ActivityLog.jsx';
 
@@ -16,7 +16,7 @@ function App() {
   const subtitle = useMemo(() => (
     account
       ? `Connected as ${account.slice(0, 6)}...${account.slice(-4)}`
-      : 'Connect your wallet, interact with your contract, and prepare IPFS uploads'
+      : 'Register institutions, issue certificates, and prepare IPFS uploads'
   ), [account]);
 
   return (
@@ -24,7 +24,7 @@ function App() {
       <div className="mx-auto max-w-6xl px-4 py-10">
         <header className="mb-10">
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8">
-            <h1 className="text-3xl font-semibold tracking-tight">Web3 + IPFS Dashboard</h1>
+            <h1 className="text-3xl font-semibold tracking-tight">University Credentials Dashboard</h1>
             <p className="mt-2 max-w-2xl text-white/80">{subtitle}</p>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10" />
           </div>
@@ -33,7 +33,7 @@ function App() {
         <main className="grid grid-cols-1 gap-6 md:grid-cols-5">
           <section className="md:col-span-3 space-y-6">
             <WalletConnector onConnected={setAccount} onLog={onLog} />
-            <ContractInteractor account={account} onLog={onLog} />
+            <EducationRegistry account={account} onLog={onLog} />
             <IPFSUploader onLog={onLog} />
           </section>
 
@@ -43,7 +43,7 @@ function App() {
         </main>
 
         <footer className="mt-10 text-center text-xs text-white/60">
-          <p>Backend integration coming next: IPFS pinning and contract relays via API.</p>
+          <p>Next: Connect to deployed contracts and IPFS pinning via backend API.</p>
         </footer>
       </div>
     </div>
